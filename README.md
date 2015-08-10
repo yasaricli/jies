@@ -5,14 +5,6 @@ Javascript functions.
     
     npm install --save jies
   
-## Started init
-    
-    jies init
-    
-=======
-## Install
-
-    npm install --save jies
 
 ## Started init
 
