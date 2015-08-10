@@ -7,6 +7,15 @@ Codes.attachSchema(new SimpleSchema({
     regEx: /^[a-z]{3,15}$/,
   },
 
+  desc: {
+    type: String,
+    optional: true,
+    autoform: {
+      type: 'textarea',
+      label: 'Description'
+    }
+  },
+
   userId: {
     type: String,
     autoValue: function() {

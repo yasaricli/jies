@@ -26,7 +26,8 @@
 
 <template name="code">
   {{# if code }}
-    <h2>{{ code.pack }}</h2>
+    <h2>{{ code.name }}</h2>
+    <p>{{ code.desc }}</p>
     <textarea name="body">{{ code.body }}</textarea>
   {{ else }}
     not defined
