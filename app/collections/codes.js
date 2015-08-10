@@ -48,3 +48,9 @@ Codes.attachSchema(new SimpleSchema({
     }
   }
 }));
+
+Codes.helpers({
+  user: function() {
+    return Users.findOne(this.userId);
+  }
+});

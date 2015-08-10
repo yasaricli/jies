@@ -26,7 +26,7 @@
 
 <template name="code">
   {{# if code }}
-    <h2>{{ code.name }}</h2>
+    <h2>{{ code.user.username }}:{{ code.name }}</h2>
     <p>{{ code.desc }}</p>
     <textarea name="body">{{ code.body }}</textarea>
   {{ else }}
