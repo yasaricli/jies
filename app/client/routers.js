@@ -10,7 +10,14 @@ Router.route('/', {
   }
 });
 
-Router.route('/:username/:name', {
+Router.route('/user/:username', {
+  name: 'Codes',
+  waitOn: function() {
+    return Meteor.subscribe('userCodes', this.params.username);
+  }
+});
+
+Router.route('/user/:username/:name', {
   name: 'Code',
   waitOn: function() {
     return Meteor.subscribe('userCodes', this.params.username);
