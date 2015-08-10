@@ -1,5 +1,5 @@
 # jies
-Javascript functions packages
+Javascript functions.
 
 
 ## Install
