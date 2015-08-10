@@ -10,11 +10,6 @@ Javascript functions packages
     
     jies init
     
-## Add Fn
+## Install functions
 
-    jies add yasaricli:float
-  
-
-## Remove Fn
-
-    jies remove yasaricli:float
+    jies install
