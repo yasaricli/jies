@@ -1,7 +1,14 @@
 Meteor.publishComposite('allCodes', {
   find: function() {
     return Codes.find({ });
-  }
+  },
+    children: [
+      {
+        find: function(code) {
+          return Users.find(code.userId);
+        }
+      }
+    ]
 });
 
 Meteor.publishComposite('userCodes', function(username) {
