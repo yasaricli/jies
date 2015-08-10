@@ -3,7 +3,7 @@ Javascript functions.
 
 ## Install
     
-    npm install --save jies
+    npm install -g jies
   
 
 ## Started init
