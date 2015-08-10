@@ -1,0 +1,42 @@
+<head>
+  <title>jies</title>
+</head>
+
+<template name="layout">
+  {{> loginButtons }}
+  <div id="Surface">
+    {{ > yield }}
+  </div>
+</template>
+
+<template name="index">
+  {{ > codes }}
+</template>
+
+<template name="codes">
+  <h2>All Codes</h2>
+  <ul>
+    {{# each codes }}
+      <li>
+        <a href="{{ pathFor route='Code' username=currentUser.username }}">{{ name }}</a>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="code">
+  {{# if code }}
+    <h2>{{ code.pack }}</h2>
+    <textarea name="body">{{ code.body }}</textarea>
+  {{ else }}
+    not defined
+  {{/if}}
+</template>
+
+<template name="push">
+  {{> quickForm collection="Codes" id="PushCodeForm" type="insert" }}
+</template>
+
+<template name="loading">
+  loading..
+</template>

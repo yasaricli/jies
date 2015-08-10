@@ -1,0 +1,32 @@
+#!/usr/bin/env node
+
+var path = require('path'),
+    Jies = require('../lib/core.js'),
+    fs = require('fs');
+
+var json = path.resolve('jies.json');
+
+switch(process.argv[2]) {
+  case 'init':
+    var exampleJson = path.resolve(__dirname, '../example/jies.json'),
+        content = fs.readFileSync(exampleJson, 'utf8');
+
+    if(!fs.existsSync(json)) {
+      fs.writeFileSync(json, content);
+    }
+  break;
+
+  case 'install':
+    var J = new Jies.Init();
+
+    fs.readFile(json, 'utf8', function (err, data) {
+      var options = JSON.parse(data);
+
+      console.log('\n -- Started '+ options.name +' -- \n');
+
+      J.include(options.functions, function(name) {
+        console.log(name + ' --> included.');
+      });
+    });
+  break;
+};

@@ -1,0 +1,18 @@
+{
+  "name": "jies",
+  "version": "1.0.0",
+  "dependencies": {
+    "colors": "0.6.x",
+    "request": "^2.60.0",
+    "underscore": "^1.7.0"
+  },
+  "bin": {
+    "jies": "./bin/jies"
+  },
+  "author": "Yasar icli <hello@yasaricli.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/yasaricli/jies.git"
+  },
+  "license": "MIT"
+}

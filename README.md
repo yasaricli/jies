@@ -1,7 +1,6 @@
 # jies
 Javascript functions.
 
-
 ## Install
     
     npm install --save jies
@@ -10,6 +9,15 @@ Javascript functions.
     
     jies init
     
+=======
+## Install
+
+    npm install --save jies
+
+## Started init
+
+    jies init
+
 ## Install functions
 
     jies install
