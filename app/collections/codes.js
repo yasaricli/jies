@@ -19,11 +19,7 @@ Codes.attachSchema(new SimpleSchema({
 
   installs: {
     type: [Object],
-    autoValue: function() {
-      if (this.isInsert) {
-        return [];
-      }
-    },
+    optional: true,
     autoform: {
       type: 'hidden'
     }
