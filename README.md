@@ -1,5 +1,5 @@
 # jies
-Javascript functions.
+Javascript function management.
 
 ## Install
     
