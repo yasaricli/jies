@@ -21,6 +21,9 @@ switch(action) {
       return helpers.getHelper('alreadyLog');
     }
 
+    // touched init 
+    helpers.getHelper('createdInitLog');
+
     return fs.writeFileSync(json, content);
   break;
 
@@ -34,10 +37,23 @@ switch(action) {
     fs.readFile(json, 'utf8', function (err, data) {
       var options = JSON.parse(data);
 
-      console.log('\n -- Started '+ options.name +' -- \n');
+      if (_.isEmpty(options.functions)) {
+        return helpers.getHelper('emptyFunctionsLog');
+      }
 
+      // started
+      helpers.getHelper('incStartedLog', options.name);
+
+      // include functions
       J.include(options.functions, function(name) {
-        console.log(name + ' --> included.');
+
+        // completed
+        helpers.getHelper('includedLog', name, ' included.'.bold.yellow);
+
+      }, function(name) {
+
+        // fail
+        helpers.getHelper('includedLog', name, ' not defined'.bold.red);
       });
     });
   break;

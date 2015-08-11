@@ -15,7 +15,7 @@ exports.Init = function(functions) {
     return ROOT_URL + 'raw/' + username + '/' + name;
   };
 
-  this.include = function(functions, callback) {
+  this.include = function(functions, success, fail) {
     var self = this,
         stream = fs.createWriteStream(FN_FILENAME);
 
@@ -35,12 +35,15 @@ exports.Init = function(functions) {
               stream.write(helpers.getHelper('fileComment', name));
               stream.write(helpers.getHelper('fileScope', body));
 
-              callback && callback(name);
+              // success
+              success && success(name);
             break;
 
             // function not defined then 404
             case 404:
-              console.log(name + ' Not defined');
+
+              // fail
+              fail && fail(name);
             break;
           };
         });
