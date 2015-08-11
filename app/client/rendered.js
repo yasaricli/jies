@@ -1,8 +1,7 @@
-
 Template.insertCode.onRendered(function() {
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     lineNumbers: true,
-    theme: 'ambiance',
+    theme: 'monokai',
     matchBrackets: true,
     tabSize: 2,
     autofocus: true,
@@ -13,7 +12,7 @@ Template.insertCode.onRendered(function() {
 Template.updateCode.onRendered(function() {
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     lineNumbers: true,
-    theme: 'ambiance',
+    theme: 'monokai',
     matchBrackets: true,
     tabSize: 2,
     autofocus: true,
@@ -25,7 +24,7 @@ Template.code.onRendered(function() {
   if (this.data.code()) {
     CodeMirror.fromTextArea(this.find("[name='body']"), {
       lineNumbers: true,
-      theme: 'ambiance',
+      theme: 'monokai',
       readOnly: true,
       mode: "javascript" // set any of supported language modes here
     });

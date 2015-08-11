@@ -1,2 +1,4 @@
-/* CSS declarations go here */
-body { padding:0px; margin:0px; }
+body { padding:0px; margin:0px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; }
+
+a { text-decoration:none; }
+.btn.push { position:absolute; right:25px; }

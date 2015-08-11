@@ -10,6 +10,9 @@
 </template>
 
 <template name="index">
+  {{# if currentUser }}
+    <a href="{{ pathFor route='InsertCode' }}" class="btn btn-success push">New Function</a>
+  {{/if}}
   {{ > codes }}
 </template>
 
@@ -41,6 +44,10 @@
   {{ else }}
     not defined
   {{/if}}
+</template>
+
+<template name="profile">
+  {{ > codes }}
 </template>
 
 <template name="insertCode">

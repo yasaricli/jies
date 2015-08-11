@@ -11,7 +11,7 @@ Router.route('/', {
 });
 
 Router.route('/profile/:username', {
-  name: 'Codes',
+  name: 'Profile',
   waitOn: function() {
     return Meteor.subscribe('profile', this.params.username);
   }
