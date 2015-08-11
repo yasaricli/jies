@@ -4,7 +4,8 @@ Codes.attachSchema(new SimpleSchema({
 
   name: {
     type: String,
-    regEx: /^[a-z]{3,15}$/,
+    denyUpdate: true,
+    regEx: /^[a-z0-9A-Z]{3,15}$/
   },
 
   desc: {
@@ -18,6 +19,7 @@ Codes.attachSchema(new SimpleSchema({
 
   userId: {
     type: String,
+    denyUpdate: true,
     autoValue: function() {
       if (this.isInsert) {
         return this.userId;
@@ -65,3 +67,12 @@ Codes.helpers({
     });
   }
 });
+
+if (Meteor.isServer) {
+  Codes.before.insert(function(userId, doc) {
+    var code = Codes.findOne(_.pick(doc, ['userId', 'name']));
+    if (code) {
+      doc.name = Random.id(10);
+    }
+  });
+}

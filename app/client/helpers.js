@@ -1,5 +1,5 @@
 Template.codes.helpers({
   codes: function() {
-    return Codes.find({});
+    return Codes.find({ }, { sort: { createdAt: -1 }});
   }
 });
