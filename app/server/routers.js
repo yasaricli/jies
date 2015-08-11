@@ -12,23 +12,13 @@ Router.route('/raw/:username/:name/:app', {
     }
 
     var app = Codes.findOne({ _id: code._id, 'installs.name': params.app });
-    if (app) {
-
-      // $INC +1
-      Codes.update({ _id: code._id, 'installs.name': params.app }, {
-        $inc: {
-          'installs.$.quantity': 1 
-        }
-      });
-
-    } else {
+    if (_.isUndefined(app)) {
 
       // $PUSH APP
       Codes.update(code._id, {
         $push: {
           installs: {
-            name: params.app,
-            quantity: 1
+            name: params.app
           }
         }
       });

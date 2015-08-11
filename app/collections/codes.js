@@ -33,10 +33,6 @@ Codes.attachSchema(new SimpleSchema({
     type: String
   },
 
-  'installs.$.quantity': {
-    type: Number
-  },
-
   userId: {
     type: String,
     denyUpdate: true,
