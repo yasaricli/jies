@@ -17,6 +17,26 @@ Codes.attachSchema(new SimpleSchema({
     }
   },
 
+  installs: {
+    type: [Object],
+    autoValue: function() {
+      if (this.isInsert) {
+        return [];
+      }
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
+
+  'installs.$.name': {
+    type: String
+  },
+
+  'installs.$.quantity': {
+    type: Number
+  },
+
   userId: {
     type: String,
     denyUpdate: true,

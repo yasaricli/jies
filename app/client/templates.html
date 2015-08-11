@@ -18,15 +18,19 @@
 
 <template name="codes">
   <h2>All Codes</h2>
-  <ul>
-    {{# each codes }}
-      <li>
-        <a href="{{ pathFor route='Code' username=user.username }}">
-          <b>{{ user.username }}</b>:{{ name }}
-        </a>
-      </li>
-    {{/each}}
-  </ul>
+  {{# if Template.subscriptionsReady }}
+    <ul>
+      {{# each codes }}
+        <li>
+          <a href="{{ pathFor route='Code' username=user.username }}">
+            <b>{{ user.username }}</b>:{{ name }} ({{ installs.length }})
+          </a>
+        </li>
+      {{/each}}
+    </ul>
+  {{ else }}
+    loading..
+  {{/if}}
 </template>
 
 <template name="code">

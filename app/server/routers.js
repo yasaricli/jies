@@ -1,4 +1,4 @@
-Router.route('/raw/:username/:name', {
+Router.route('/raw/:username/:name/:app', {
   name: 'Raw',
   where: 'server',
   action: function(req, res, next) {
@@ -9,6 +9,29 @@ Router.route('/raw/:username/:name', {
     if (_.isUndefined(user) || _.isUndefined(code)) {
       res.writeHead(404);
       return res.end('Not found');
+    }
+
+    var app = Codes.findOne({ _id: code._id, 'installs.name': params.app });
+    if (app) {
+
+      // $INC +1
+      Codes.update({ _id: code._id, 'installs.name': params.app }, {
+        $inc: {
+          'installs.$.quantity': 1 
+        }
+      });
+
+    } else {
+
+      // $PUSH APP
+      Codes.update(code._id, {
+        $push: {
+          installs: {
+            name: params.app,
+            quantity: 1
+          }
+        }
+      });
     }
 
     res.writeHead(200, { "Content-Type": "text/javascript" });

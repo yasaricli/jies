@@ -11,11 +11,11 @@ var ROOT_URL = 'http://jies.meteor.com/',
     FN_FILENAME = 'jies.js';
 
 exports.Init = function(functions) {
-  this.getUrl = function(username, name) {
-    return ROOT_URL + 'raw/' + username + '/' + name;
+  this.getUrl = function(username, name, app) {
+    return ROOT_URL + 'raw/' + username + '/' + name + '/' + app;
   };
 
-  this.include = function(functions, success, fail) {
+  this.include = function(functions, app, success, fail) {
     var self = this,
         stream = fs.createWriteStream(FN_FILENAME);
 
@@ -27,7 +27,7 @@ exports.Init = function(functions) {
       _.each(functions, function(name) {
         var split = name.split(':'); // username:name --> ['username', 'name']
 
-        request(self.getUrl(split[0], split[1]), function(error, response, body) {
+        request(self.getUrl(split[0], split[1], app), function(error, response, body) {
 
           // if function found then 200
           switch(response.statusCode) {

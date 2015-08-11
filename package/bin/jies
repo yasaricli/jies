@@ -21,7 +21,7 @@ switch(action) {
       return helpers.getHelper('alreadyLog');
     }
 
-    // touched init 
+    // touched init
     helpers.getHelper('createdInitLog');
 
     return fs.writeFileSync(json, content);
@@ -45,7 +45,7 @@ switch(action) {
       helpers.getHelper('incStartedLog', options.name);
 
       // include functions
-      J.include(options.functions, function(name) {
+      J.include(options.functions, options.name, function(name) {
 
         // completed
         helpers.getHelper('includedLog', name, ' included.'.bold.yellow);
