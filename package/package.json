@@ -1,6 +1,6 @@
 {
   "name": "jies",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
     "colors": "0.6.x",
     "request": "^2.60.0",
