@@ -27,13 +27,11 @@
 <template name="code">
   {{# if code }}
     <h2>{{ code.user.username }}:{{ code.name }}</h2>
-
     <p>
       {{#markdown}}
         {{ code.desc }}
       {{/markdown}}
     </p>
-
     <textarea name="body">{{ code.body }}</textarea>
 
     {{# if code.isOwner }}
