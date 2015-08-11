@@ -40,7 +40,12 @@
     <textarea name="body">{{ code.body }}</textarea>
 
     {{# if code.isOwner }}
-      <a href="{{ pathFor route='UpdateCode' username=code.user.username name=code.name }}">Update</a>
+      <a class="btn btn-success" href="{{ pathFor route='UpdateCode' username=code.user.username name=code.name }}">
+        Update
+      </a>
+      {{#quickRemoveButton collection="Codes" _id=code._id class="btn btn-danger" onSuccess=onSuccess }}
+        Delete Function
+      {{/quickRemoveButton}}
     {{/if}}
 
   {{ else }}

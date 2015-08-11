@@ -3,3 +3,11 @@ Template.codes.helpers({
     return Codes.find({ }, { sort: { createdAt: -1 }});
   }
 });
+
+Template.code.helpers({
+  onSuccess: function() {
+    return function() {
+      return Router.go('Index');
+    }
+  }
+});
