@@ -11,10 +11,11 @@ Meteor.publishComposite('codes', {
     ]
 });
 
-Meteor.publishComposite('code', function(name) {
+Meteor.publishComposite('code', function(username, name) {
   return {
     find: function() {
-      return Codes.find({ name: name });
+      var user = Users.findOne({ username: username });
+      return Codes.find({ userId: user._id, name: name });
     },
 
     children: [

@@ -20,7 +20,8 @@ Router.route('/profile/:username', {
 Router.route('/profile/:username/:name', {
   name: 'Code',
   waitOn: function() {
-    return Meteor.subscribe('code', this.params.name);
+    var params = this.params;
+    return Meteor.subscribe('code', params.username, params.name);
   },
   data: function() {
     var params = this.params;
@@ -39,7 +40,8 @@ Router.route('/push', {
 Router.route('/profile/:username/:name/update', {
   name: 'UpdateCode',
   waitOn: function() {
-    return Meteor.subscribe('code', this.params.name);
+    var params = this.params;
+    return Meteor.subscribe('code', params.username, params.name);
   },
   data: function() {
     var params = this.params;
