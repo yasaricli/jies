@@ -1,4 +1,4 @@
-Meteor.publishComposite('allCodes', {
+Meteor.publishComposite('codes', {
   find: function() {
     return Codes.find({ });
   },
@@ -11,7 +11,23 @@ Meteor.publishComposite('allCodes', {
     ]
 });
 
-Meteor.publishComposite('userCodes', function(username) {
+Meteor.publishComposite('code', function(name) {
+  return {
+    find: function() {
+      return Codes.find({ name: name });
+    },
+
+    children: [
+      {
+        find: function(code) {
+          return Users.find({ _id: code.userId });
+        }
+      }
+    ]
+  }
+});
+
+Meteor.publishComposite('profile', function(username) {
   return {
     find: function() {
       return Users.find({ username: username });

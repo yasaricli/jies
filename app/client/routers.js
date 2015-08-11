@@ -6,21 +6,21 @@ Router.configure({
 Router.route('/', {
   name: 'Index',
   waitOn: function() {
-    return Meteor.subscribe('allCodes');
+    return Meteor.subscribe('codes');
   }
 });
 
-Router.route('/user/:username', {
+Router.route('/profile/:username', {
   name: 'Codes',
   waitOn: function() {
-    return Meteor.subscribe('userCodes', this.params.username);
+    return Meteor.subscribe('profile', this.params.username);
   }
 });
 
-Router.route('/user/:username/:name', {
+Router.route('/profile/:username/:name', {
   name: 'Code',
   waitOn: function() {
-    return Meteor.subscribe('userCodes', this.params.username);
+    return Meteor.subscribe('code', this.params.name);
   },
   data: function() {
     var params = this.params;
