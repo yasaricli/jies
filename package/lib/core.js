@@ -2,9 +2,11 @@ var request = require('request'),
    fs = require('fs'),
     _ = require('underscore');
 
+// init require colors
+require('colors');
 
 var ROOT_URL = 'http://jies.meteor.com/',
-    FN_FILENAME = 'jies.js',
+    FN_FILENAME = 'jies.js';
 
 exports.Init = function(functions) {
 

@@ -2,11 +2,19 @@
 
 var path = require('path'),
     Jies = require('../lib/core.js'),
-    fs = require('fs');
+    fs = require('fs'),
+    _ = require('underscore');
 
-var json = path.resolve('jies.json');
+// init require colors
+require('colors');
 
-switch(process.argv[2]) {
+var json = path.resolve('jies.json'),
+    action = process.argv[2];
+
+console.log('\nJies: Javascript Functions'.bold.blue);
+console.log('------------------------------------------------\n'.bold.blue);
+
+switch(action) {
   case 'init':
     var exampleJson = path.resolve(__dirname, '../example/jies.json'),
         content = fs.readFileSync(exampleJson, 'utf8');
@@ -19,6 +27,10 @@ switch(process.argv[2]) {
   case 'install':
     var J = new Jies.Init();
 
+    if (!fs.existsSync(json)) {
+      return console.log('jies.json file does not exist!\n'.red.bold);
+    }
+
     fs.readFile(json, 'utf8', function (err, data) {
       var options = JSON.parse(data);
 
@@ -29,4 +41,10 @@ switch(process.argv[2]) {
       });
     });
   break;
+
+  default:
+    console.error('\nValid Actions'.bold);
+    console.error('-------------'.bold);
+    console.error('init          - Initialize a Jies project'.bold);
+    console.error('install       - Install functions'.bold);
 };

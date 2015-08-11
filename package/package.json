@@ -4,7 +4,8 @@
   "dependencies": {
     "colors": "0.6.x",
     "request": "^2.60.0",
-    "underscore": "^1.7.0"
+    "underscore": "^1.7.0",
+    "colors": "0.6.x"
   },
   "bin": {
     "jies": "./bin/jies"
