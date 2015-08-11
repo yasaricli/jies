@@ -27,19 +27,30 @@
 <template name="code">
   {{# if code }}
     <h2>{{ code.user.username }}:{{ code.name }}</h2>
+
     <p>
       {{#markdown}}
         {{ code.desc }}
       {{/markdown}}
     </p>
+
     <textarea name="body">{{ code.body }}</textarea>
+
+    {{# if code.isOwner }}
+      <a href="{{ pathFor route='UpdateCode' username=code.user.username name=code.name }}">Update</a>
+    {{/if}}
+
   {{ else }}
     not defined
   {{/if}}
 </template>
 
-<template name="push">
-  {{> quickForm collection="Codes" id="PushCodeForm" type="insert" }}
+<template name="insertCode">
+  {{> quickForm collection="Codes" id="InsertCodeForm" type="insert" }}
+</template>
+
+<template name="updateCode">
+  {{> quickForm collection="Codes" id="UpdateCodeForm" type="update" doc=code }}
 </template>
 
 <template name="loading">

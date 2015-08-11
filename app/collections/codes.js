@@ -52,5 +52,16 @@ Codes.attachSchema(new SimpleSchema({
 Codes.helpers({
   user: function() {
     return Users.findOne(this.userId);
+  },
+
+  isOwner: function() {
+    return _.isEqual(this.userId, Meteor.userId());
+  },
+
+  absoluteUrl: function() {
+    return Router.url('Code', {
+      name: this.name,
+      username: this.user().username
+    });
   }
 });

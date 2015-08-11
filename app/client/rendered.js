@@ -1,5 +1,16 @@
 
-Template.push.onRendered(function() {
+Template.insertCode.onRendered(function() {
+  CodeMirror.fromTextArea(this.find("[name='body']"), {
+    lineNumbers: true,
+    theme: 'ambiance',
+    matchBrackets: true,
+    tabSize: 2,
+    autofocus: true,
+    mode: "javascript" // set any of supported language modes here
+  });
+});
+
+Template.updateCode.onRendered(function() {
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     lineNumbers: true,
     theme: 'ambiance',
@@ -21,10 +32,7 @@ Template.code.onRendered(function() {
   }
 });
 
-Template.code.onDestroyed(function() {
-  $('.CodeMirror').remove();
-});
-
-Template.push.onDestroyed(function() {
+// code mirror on destroyed template remove .
+onDestroyedTemplates(['insertCode', 'updateCode', 'code'], function() {
   $('.CodeMirror').remove();
 });

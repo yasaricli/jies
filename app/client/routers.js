@@ -33,7 +33,22 @@ Router.route('/profile/:username/:name', {
 });
 
 Router.route('/push', {
-  name: 'Push'
+  name: 'InsertCode'
+});
+
+Router.route('/profile/:username/:name/update', {
+  name: 'UpdateCode',
+  waitOn: function() {
+    return Meteor.subscribe('code', this.params.name);
+  },
+  data: function() {
+    var params = this.params;
+    return {
+      code: function() {
+        return Codes.findOne({ name: params.name });
+      }
+    }
+  }
 });
 
 Accounts.ui.config({
