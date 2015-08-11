@@ -6,12 +6,12 @@ Javascript functions.
     npm install -g jies
   
 
-## Started init
+### Started init
 
     jies init
 Interactively create a jies.json file
 
-## default jies.json
+### jies.json
 
 ```json
 {
@@ -21,7 +21,6 @@ Interactively create a jies.json file
 }
 ```
 
-
-## Install functions
+### Install functions
 
     jies install
