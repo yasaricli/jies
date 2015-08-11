@@ -15,7 +15,9 @@ Meteor.publishComposite('code', function(username, name) {
   return {
     find: function() {
       var user = Users.findOne({ username: username });
-      return Codes.find({ userId: user._id, name: name });
+      if (user) {
+        return Codes.find({ userId: user._id, name: name });
+      }
     },
 
     children: [

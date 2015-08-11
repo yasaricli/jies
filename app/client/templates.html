@@ -22,7 +22,7 @@
     {{# each codes }}
       <li>
         <a href="{{ pathFor route='Code' username=user.username }}">
-          {{ user.username }}:{{ name }}
+          <b>{{ user.username }}</b>:{{ name }}
         </a>
       </li>
     {{/each}}
