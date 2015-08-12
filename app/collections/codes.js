@@ -17,19 +17,6 @@ Codes.attachSchema(new SimpleSchema({
     }
   },
 
-  installs: {
-    type: [String],
-    optional: true,
-    autoValue: function() {
-      if (this.isInsert) {
-        return [];
-      }
-    },
-    autoform: {
-      type: 'hidden'
-    }
-  },
-
   userId: {
     type: String,
     denyUpdate: true,
@@ -84,6 +71,7 @@ Codes.helpers({
 if (Meteor.isServer) {
   Codes.before.insert(function(userId, doc) {
     var code = Codes.findOne(_.pick(doc, ['userId', 'name']));
+
     if (code) {
       doc.name = Random.id(10);
     }
