@@ -9,8 +9,10 @@ Router.route('/raw/:username/:name/:app', {
     if (user) {
       var code = Codes.findOne({ userId: user._id, name: params.name });
 
-      res.writeHead(200, { "Content-Type": "text/javascript" });
-      return res.end(code.body);
+      if (code) {
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        return res.end(code.body);
+      }
     }
 
     res.writeHead(404);

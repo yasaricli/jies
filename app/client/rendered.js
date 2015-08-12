@@ -31,10 +31,6 @@ Template.code.onRendered(function() {
   }
 });
 
-Template.codes.onCreated(function() {
-  this.subscribe('codes');
-});
-
 // code mirror on destroyed template remove .
 onDestroyedTemplates(['insertCode', 'updateCode', 'code'], function() {
   $('.CodeMirror').remove();

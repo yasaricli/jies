@@ -4,17 +4,24 @@ Router.configure({
 });
 
 Router.route('/', {
-  name: 'Index'
+  name: 'Index',
+  waitOn: function() {
+    return Meteor.subscribe('codes');
+  }
 });
 
-Router.route('/profile/:username', {
+Router.route('/push', {
+  name: 'InsertCode'
+});
+
+Router.route('/~:username', {
   name: 'Profile',
   waitOn: function() {
     return Meteor.subscribe('profile', this.params.username);
   }
 });
 
-Router.route('/profile/:username/:name', {
+Router.route('/~:username/:name', {
   name: 'Code',
   waitOn: function() {
     var params = this.params;
@@ -30,11 +37,7 @@ Router.route('/profile/:username/:name', {
   }
 });
 
-Router.route('/push', {
-  name: 'InsertCode'
-});
-
-Router.route('/profile/:username/:name/update', {
+Router.route('/~:username/:name/update', {
   name: 'UpdateCode',
   waitOn: function() {
     var params = this.params;
