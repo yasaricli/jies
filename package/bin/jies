@@ -45,7 +45,7 @@ switch(action) {
       helpers.getHelper('incStartedLog', options.name);
 
       // include functions
-      J.include(options.functions, options.name, function(name) {
+      J.include(options, function(name) {
 
         // completed
         helpers.getHelper('includedLog', name, ' included.'.bold.yellow);

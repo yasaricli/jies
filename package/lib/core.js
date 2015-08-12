@@ -7,27 +7,31 @@ var request = require('request'),
 // init require colors
 require('colors');
 
-var ROOT_URL = 'http://jies.meteor.com/',
-    FN_FILENAME = 'jies.js';
+var ROOT_URL = 'http://jies.meteor.com/';
 
 exports.Init = function(functions) {
   this.getUrl = function(username, name, app) {
     return ROOT_URL + 'raw/' + username + '/' + name + '/' + app;
   };
 
-  this.include = function(functions, app, success, fail) {
-    var self = this,
-        stream = fs.createWriteStream(FN_FILENAME);
+  this.include = function(options, success, fail) {
+    var self = this, stream, opt;
+
+    // default options
+    opt = _.extend({ file: 'jies.js' }, options);
+
+    // stream file
+    stream = fs.createWriteStream(opt.file);
 
     stream.once('open', function() {
 
       // Header write
-      stream.write(helpers.getHelper('fileHeader', functions));
+      stream.write(helpers.getHelper('fileHeader', options.functions));
 
-      _.each(functions, function(name) {
+      _.each(options.functions, function(name) {
         var split = name.split(':'); // username:name --> ['username', 'name']
 
-        request(self.getUrl(split[0], split[1], app), function(error, response, body) {
+        request(self.getUrl(split[0], split[1], options.name), function(error, response, body) {
 
           // if function found then 200
           switch(response.statusCode) {

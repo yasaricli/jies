@@ -71,7 +71,7 @@ var HELPERS = {
 
   // JS SCOPE
   fileScope: function(code) {
-    var out = '(function() {' +
+    var out = '(function(root) {' +
               '\n\n' + code + '\n\n' +
               '}).call(this); \n\n';
     return out;
