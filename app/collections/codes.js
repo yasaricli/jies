@@ -18,15 +18,16 @@ Codes.attachSchema(new SimpleSchema({
   },
 
   installs: {
-    type: [Object],
+    type: [String],
     optional: true,
+    autoValue: function() {
+      if (this.isInsert) {
+        return [];
+      }
+    },
     autoform: {
       type: 'hidden'
     }
-  },
-
-  'installs.$.name': {
-    type: String
   },
 
   userId: {

@@ -23,8 +23,7 @@
       {{# each codes }}
         <li>
           <a href="{{ pathFor route='Code' username=user.username }}">
-            <b>{{ user.username }}</b>:{{ name }}
-            ({{# if installs }}{{ installs.length }}{{ else }}0{{/if}})
+            <b>{{ user.username }}</b>:{{ name }}({{ installs.length }})
           </a>
         </li>
       {{/each}}

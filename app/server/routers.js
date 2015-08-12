@@ -3,28 +3,32 @@ Router.route('/raw/:username/:name/:app', {
   where: 'server',
   action: function(req, res, next) {
     var params = this.params,
-        user = Users.findOne({ username: params.username }),
-        code = Codes.findOne({ userId: user._id, name: params.name });
+        user = Users.findOne({ username: params.username });
 
-    if (_.isUndefined(user) || _.isUndefined(code)) {
-      res.writeHead(404);
-      return res.end('Not found');
-    }
+    // USER FOUND
+    if (user) {
+      var code = Codes.findOne({ userId: user._id, name: params.name });
 
-    var app = Codes.findOne({ _id: code._id, 'installs.name': params.app });
-    if (_.isUndefined(app)) {
+      // CODE FOUND
+      if (code) {
+        var app = Codes.findOne({ _id: code._id, 'installs': params.app });
 
-      // $PUSH APP
-      Codes.update(code._id, {
-        $push: {
-          installs: {
-            name: params.app
-          }
+        if (_.isUndefined(app)) {
+
+          // $PUSH APP
+          Codes.update(code._id, {
+            $push: {
+              installs: params.app
+            }
+          });
         }
-      });
+
+        res.writeHead(200, { "Content-Type": "text/javascript" });
+        return res.end(code.body);
+      }
     }
 
-    res.writeHead(200, { "Content-Type": "text/javascript" });
-    return res.end(code.body);
+    res.writeHead(404);
+    return res.end('Not found');
   }
 });
