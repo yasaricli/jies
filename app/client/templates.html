@@ -3,27 +3,69 @@
 </head>
 
 <template name="layout">
-  {{> loginButtons }}
-  <div id="Surface">
+  <div class="navbar">
+    <div class="flex flex-center full-width" style="min-height:4rem;">
+      {{# if currentUser }}
+        <a href="{{ pathFor route='InsertCode' }}" class="button bg-twitter-blue ml1">New Function</a>
+      {{/if}}
+      <div class="flex-grow center bold"></div>
+      <div class="mr1">
+        {{> loginButtons }}
+      </div>
+    </div>
+  </div>
+  <div id="Surface" class="container px0 sm-px2 mb4">
     {{ > yield }}
+  </div>
+  <div class="bg-charcoal">
+    <div class="container px2">
+      <div class="flex flex-center py2">
+        <div data-reactid=".0.3.0.0.1" style="margin: auto;">
+          <ul class="list-reset flex mxn2 mb0">
+            <li>
+              <a class="block p2 gray white-hover" href="{{ pathFor route='About' }}">about</a>
+            </li>
+            <li>
+              <a class="block p2 gray white-hover" href="https://github.com/yasaricli/jies">github</a>
+            </li>
+            <li>
+              <a class="block p2 gray white-hover" href="https://www.npmjs.com/package/jies">npm</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <template name="index">
-  {{# if currentUser }}
-    <a href="{{ pathFor route='InsertCode' }}" class="btn btn-success push">New Function</a>
-  {{/if}}
   {{ > codes }}
 </template>
 
 <template name="codes">
-  <h2>All Codes</h2>
   {{# if codes.count }}
-    <ul>
+    <ul class="functions sm-flex flex-wrap mxn2">
       {{# each codes }}
-        <li>
+        <li class="sm-col-12 px2">
           <a href="{{ pathFor route='Code' username=user.username }}">
-            <b>{{ user.username }}</b>:{{ name }}
+            <div class="px2 py3 bg-smoke-hover border-bottom">
+              <div class="flex flex-center">
+                <div class="flex-auto mr2">
+                  <div class="h2 black">
+                    <span>{{ user.username }}:{{ name }}</span>
+                  </div>
+                  <div class="black h5">{{ desc }}</div>
+                  <div class="h6 gray">created by <b>{{ user.username }}</b></div>
+                </div>
+                <div class="flex-none" style="width:3rem;">
+                  <div class="bg-silver rounded" style="width:3rem;height:3rem;outline:none;">
+                    <a href="{{ pathFor route='Profile' username=user.username }}">
+                      {{> avatar user=user }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </a>
         </li>
       {{/each}}
@@ -36,37 +78,55 @@
 <template name="code">
   {{# if code }}
     <h2>{{ code.user.username }}:{{ code.name }}</h2>
-    <p>
-      {{#markdown}}
-        {{ code.desc }}
-      {{/markdown}}
-    </p>
+    <p class="gray h4">{{ code.desc }}</p>
     <textarea name="body">{{ code.body }}</textarea>
-
     {{# if code.isOwner }}
-      <a class="btn btn-success" href="{{ pathFor route='UpdateCode' username=code.user.username name=code.name }}">
-        Update
-      </a>
-      {{#quickRemoveButton collection="Codes" _id=code._id class="btn btn-danger" onSuccess=onSuccess }}
-        Delete Function
-      {{/quickRemoveButton}}
+      <div class="sm-mt1">
+        <a class="button" href="{{ pathFor route='UpdateCode' username=code.user.username name=code.name }}">
+          Edit
+        </a>
+        {{#quickRemoveButton collection="Codes" _id=code._id class="button bg-orange" onSuccess=onSuccess }}
+          Delete Function
+        {{/quickRemoveButton}}
+      </div>
     {{/if}}
-
+    <div class="mt3 p2 border-bottom bold mb2">Readme</div>
+    {{#markdown}}
+      {{ code.readme }}
+    {{/markdown}}
   {{ else }}
     not defined
   {{/if}}
 </template>
 
 <template name="profile">
+  <div class="flex flex-column flex-center p3 md-p4 bg-white">
+    <div class="mb2">
+      {{> avatar user=user shape="circle" size="big" class="profile-avatar" }}
+    </div>
+    <div class="center">
+      <h2 class="mt0 mb0 bold">yasaricli</h2>
+    </div>
+  </div>
   {{ > codes }}
 </template>
 
 <template name="insertCode">
-  {{> quickForm collection="Codes" id="InsertCodeForm" type="insert" }}
+  {{# autoForm collection="Codes" id="InsertCodeForm" type="insert" }}
+    {{# each afFieldNames }}
+      {{> afQuickField name=this.name options=afOptionsFromSchema}}
+    {{/each}}
+    <button type="submit" class="button mt2">Push Function</button>
+  {{/autoForm}}
 </template>
 
 <template name="updateCode">
-  {{> quickForm collection="Codes" id="UpdateCodeForm" type="update" doc=code }}
+  {{# autoForm collection="Codes" id="UpdateCodeForm" type="update" doc=code}}
+    {{# each afFieldNames }}
+      {{> afQuickField name=this.name options=afOptionsFromSchema}}
+    {{/each}}
+    <button type="submit" class="button mt2">Update</button>
+  {{/autoForm}}
 </template>
 
 <template name="loading">

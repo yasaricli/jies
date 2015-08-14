@@ -5,15 +5,31 @@ Codes.attachSchema(new SimpleSchema({
   name: {
     type: String,
     denyUpdate: true,
-    regEx: /^[a-z0-9A-Z]{3,15}$/
+    regEx: /^[a-z0-9A-Z]{3,15}$/,
+    autoform: {
+      label: false,
+      placeholder: 'Name',
+      class: 'field-light block full-width mt2'
+    }
   },
 
   desc: {
     type: String,
+    autoform: {
+      label: false,
+      placeholder: 'Description',
+      class: 'field-light full-width block mt2 mb2'
+    }
+  },
+
+  readme: {
+    type: String,
     optional: true,
     autoform: {
       type: 'textarea',
-      label: 'Description'
+      label: false,
+      placeholder: 'Readme',
+      class: 'field-light full-width block mt2 mb2'
     }
   },
 
@@ -46,7 +62,8 @@ Codes.attachSchema(new SimpleSchema({
   body: {
     type: String,
     autoform: {
-      type: 'textarea'
+      type: 'textarea',
+      label: false
     }
   }
 }));

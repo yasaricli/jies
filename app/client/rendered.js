@@ -1,4 +1,6 @@
 Template.insertCode.onRendered(function() {
+  this.$('[name="readme"]').autosize();
+
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     lineNumbers: true,
     theme: 'monokai',
@@ -10,6 +12,8 @@ Template.insertCode.onRendered(function() {
 });
 
 Template.updateCode.onRendered(function() {
+  this.$('[name="readme"]').autosize();
+  
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     lineNumbers: true,
     theme: 'monokai',
