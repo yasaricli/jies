@@ -8,6 +8,7 @@ Accounts.ui.config({
 });
 
 Avatar.setOptions({
+  gravatarDefault: "retro",
   imageSizes: {
     'big': 160,
     'low-small': 24
