@@ -1,8 +1,3 @@
-Router.configure({
-  layoutTemplate: 'layout',
-  loadingTemplate: 'loading'
-});
-
 Router.route('/', {
   name: 'Index',
   waitOn: function() {
@@ -59,8 +54,4 @@ Router.route('/~:username/:name/update', {
       }
     }
   }
-});
-
-Accounts.ui.config({
-  passwordSignupFields: 'USERNAME_AND_OPTIONAL_EMAIL'
 });

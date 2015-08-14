@@ -73,8 +73,20 @@ Codes.helpers({
     return Users.findOne(this.userId);
   },
 
+  stars: function() {
+    return Stars.find({ codeId: this._id });
+  },
+
   isOwner: function() {
     return _.isEqual(this.userId, Meteor.userId());
+  },
+
+  star: function() {
+    return Stars.findOne({ userId: Meteor.userId(), codeId: this._id });
+  },
+
+  isStar: function() {
+    return !!this.star();
   },
 
   absoluteUrl: function() {

@@ -1,14 +1,21 @@
-Meteor.publishComposite('codes', {
-  find: function() {
-    return Codes.find({ });
-  },
+Meteor.publishComposite('codes', function() {
+  return {
+    find: function() {
+      return Codes.find({});
+    },
     children: [
       {
         find: function(code) {
-          return Users.find(code.userId);
+          return Users.find({ _id: code.userId });
+        }
+      },
+      {
+        find: function(code) {
+          return Stars.find({ codeId: code._id });
         }
       }
     ]
+  }
 });
 
 Meteor.publishComposite('code', function(username, name) {
@@ -25,6 +32,13 @@ Meteor.publishComposite('code', function(username, name) {
         find: function(code) {
           return Users.find({ _id: code.userId });
         }
+      },
+
+      {
+        find: function(code) {
+          return Stars.find({ codeId: code._id });
+        }
+
       }
     ]
   }

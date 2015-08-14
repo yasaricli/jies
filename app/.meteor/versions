@@ -6,6 +6,7 @@ aldeed:autoform@5.4.0
 aldeed:collection2@2.3.3
 aldeed:delete-button@1.0.0
 aldeed:simple-schema@1.3.3
+alethes:pages@1.8.4
 autoupdate@1.2.1
 babel-compiler@5.8.3_1
 babel-runtime@0.1.3
@@ -16,6 +17,7 @@ blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
+coffeescript@1.0.6
 copleykj:jquery-autosize@1.17.8
 dburles:collection-helpers@1.0.3
 ddp@1.1.0
@@ -80,6 +82,7 @@ spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
 templating@1.1.1
+tmeasday:publish-counts@0.6.0
 tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3

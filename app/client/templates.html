@@ -57,6 +57,26 @@
                   <div class="black h5">{{ desc }}</div>
                   <div class="h6 gray">created by <b>{{ user.username }}</b></div>
                 </div>
+                {{# if stars.count }}
+                  <div class="flex-none mr1">
+                    <div class="flex flex-center">
+                      <div class="flex">
+                        <div class="flex-shrink">
+                          <div class="stack flex stack--right">
+                            {{# each stars }}
+                              <div class="stack-item">
+                                {{> avatar user=user size="low-small" shape="circle"}}
+                              </div>
+                            {{/each}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="gray h5 bold px1">
+                        <span>+ </span><span>{{ stars.count }}</span>
+                      </div>
+                    </div>
+                  </div>
+                {{/if}}
                 <div class="flex-none" style="width:3rem;">
                   <div class="bg-silver rounded" style="width:3rem;height:3rem;outline:none;">
                     <a href="{{ pathFor route='Profile' username=user.username }}">
@@ -77,7 +97,10 @@
 
 <template name="code">
   {{# if code }}
-    <h2>{{ code.user.username }}:{{ code.name }}</h2>
+    <h2>
+      <i class="fa star {{# if code.isStar }}fa-star{{ else }}fa-star-o{{/if}}"></i>
+      {{ code.user.username }}:{{ code.name }}
+    </h2>
     <p class="gray h4">{{ code.desc }}</p>
     <textarea name="body">{{ code.body }}</textarea>
     {{# if code.isOwner }}
@@ -105,7 +128,7 @@
       {{> avatar user=user shape="circle" size="big" class="profile-avatar" }}
     </div>
     <div class="center">
-      <h2 class="mt0 mb0 bold">yasaricli</h2>
+      <h2 class="mt0 mb0 bold">{{ user.username }}</h2>
     </div>
   </div>
   {{ > codes }}
