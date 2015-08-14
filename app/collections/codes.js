@@ -9,7 +9,7 @@ Codes.attachSchema(new SimpleSchema({
     autoform: {
       label: false,
       placeholder: 'Name',
-      class: 'field-light block full-width mt2'
+      class: 'field-light block full-width mt2 big h2'
     }
   },
 
@@ -18,7 +18,7 @@ Codes.attachSchema(new SimpleSchema({
     autoform: {
       label: false,
       placeholder: 'Description',
-      class: 'field-light full-width block mt2 mb2'
+      class: 'field-light full-width block mt2 mb2 big h2'
     }
   },
 
@@ -28,7 +28,7 @@ Codes.attachSchema(new SimpleSchema({
     autoform: {
       type: 'textarea',
       label: false,
-      placeholder: 'Readme',
+      placeholder: 'Readme (optional)',
       class: 'field-light full-width block mt2 mb2'
     }
   },

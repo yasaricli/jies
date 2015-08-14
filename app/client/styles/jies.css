@@ -1047,7 +1047,7 @@ hr {
 }
 
 .field-light.is-error,.field-light:invalid {
-    border-color: #ff4136
+    /* border-color: #ff4136 */
 }
 
 .field-light.is-error.is-focused,.field-light.is-error:focus {
