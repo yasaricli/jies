@@ -1,5 +1,6 @@
 Template.insertCode.onRendered(function() {
   this.$('[name="readme"]').autosize();
+  this.$('[name="name"]').focus();
 
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     viewportMargin: Infinity,
@@ -12,6 +13,7 @@ Template.insertCode.onRendered(function() {
 
 Template.updateCode.onRendered(function() {
   this.$('[name="readme"]').autosize();
+  this.$('[name="desc"]').focus();
 
   CodeMirror.fromTextArea(this.find("[name='body']"), {
     viewportMargin: Infinity,
