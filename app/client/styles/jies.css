@@ -1022,7 +1022,7 @@ hr {
 .field-light.is-focused,.field-light:focus {
     outline: 0;
     border-color: #11a3b7;
-    box-shadow: 0 0 0 2px rgba(17,163,183,.5)
+    /* box-shadow: 0 0 0 2px rgba(17,163,183,.5) */
 }
 
 .field-light.is-disabled,.field-light.is-read-only,.field-light:disabled,.field-light:read-only:not(select) {
@@ -2887,7 +2887,7 @@ code .gc {
 }
 
 .field-light:invalid:focus {
-    box-shadow: 0 0 0 2px rgba(255,65,54,.5)
+    /* box-shadow: 0 0 0 2px rgba(255,65,54,.5) */
 }
 
 h1,h2,h3,h4,h5,h6 {

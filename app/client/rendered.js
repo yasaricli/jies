@@ -2,11 +2,10 @@ Template.insertCode.onRendered(function() {
   this.$('[name="readme"]').autosize();
 
   CodeMirror.fromTextArea(this.find("[name='body']"), {
+    viewportMargin: Infinity,
     lineNumbers: true,
-    theme: 'monokai',
-    matchBrackets: true,
+    theme: 'neo',
     tabSize: 2,
-    autofocus: true,
     mode: "javascript" // set any of supported language modes here
   });
 });
@@ -15,11 +14,10 @@ Template.updateCode.onRendered(function() {
   this.$('[name="readme"]').autosize();
 
   CodeMirror.fromTextArea(this.find("[name='body']"), {
+    viewportMargin: Infinity,
     lineNumbers: true,
-    theme: 'monokai',
-    matchBrackets: true,
+    theme: 'neo',
     tabSize: 2,
-    autofocus: true,
     mode: "javascript" // set any of supported language modes here
   });
 });
@@ -28,7 +26,7 @@ Template.code.onRendered(function() {
   if (this.data.code()) {
     CodeMirror.fromTextArea(this.find("[name='body']"), {
       lineNumbers: true,
-      theme: 'monokai',
+      theme: 'neo',
       readOnly: true,
       mode: "javascript" // set any of supported language modes here
     });

@@ -1,5 +1,9 @@
 @gray:       #a3a6ad;
 @yellow:     rgba(249, 201, 51, 0.8);
+@red:        #ff4136;
+
+
+textarea { resize:none; }
 
 #Surface { }
 
@@ -28,10 +32,6 @@
   }
 }
 
-textarea {
-  resize:none;
-}
-
 .fa-star-o {
   cursor:pointer;
   color: @gray;
@@ -39,4 +39,22 @@ textarea {
 
 .fa-star:extend(.fa-star-o) {
   color: @yellow;
+}
+
+.CodeMirror {
+  min-height:300px;
+  height:auto;
+  font-size:15px;
+}
+
+.form-group {
+  position:relative;
+
+  .help-block {
+    color: @red;
+    position:absolute;
+    right: 17px;
+    top: 9px;
+    font-size: 13px;
+  }
 }
