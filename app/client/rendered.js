@@ -35,6 +35,10 @@ Template.code.onRendered(function() {
   }
 });
 
+Template.search.onRendered(function() {
+  this.$('input').focus();
+});
+
 // code mirror on destroyed template remove .
 onDestroyedTemplates(['insertCode', 'updateCode', 'code'], function() {
   $('.CodeMirror').remove();

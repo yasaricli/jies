@@ -51,8 +51,11 @@ localstorage@1.0.3
 logging@1.0.7
 markdown@1.0.4
 matb33:collection-hooks@0.7.13
+matteodem:easy-search@1.6.2
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorhacks:aggregate@1.2.1
+meteorhacks:collection-utils@1.2.0
 meteorhacks:inject-initial@1.0.2
 minifiers@1.1.5
 minimongo@1.0.8

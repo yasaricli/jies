@@ -1,5 +1,8 @@
 Codes = new Mongo.Collection('codes');
 
+// name is the field of the documents to search over
+Codes.initEasySearch('name');
+
 Codes.attachSchema(new SimpleSchema({
 
   name: {

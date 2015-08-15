@@ -21,7 +21,7 @@
   <div id="Surface" class="container px0 sm-px2 mb4">
     {{ > yield }}
   </div>
-  <div class="bg-charcoal">
+  <div class="bg-charcoal full-width">
     <div class="container px2">
       <div class="flex flex-center py2">
         <div data-reactid=".0.3.0.0.1" style="margin: auto;">
@@ -43,60 +43,64 @@
 </template>
 
 <template name="index">
-  {{ > codes }}
+  {{ > search }}
 </template>
 
 <template name="codes">
   {{# if codes.count }}
     <ul class="functions sm-flex flex-wrap mxn2">
       {{# each codes }}
-        <li class="sm-col-12 px2">
-          <a href="{{ pathFor route='Code' username=user.username }}">
-            <div class="px2 py3 bg-smoke-hover border-bottom">
-              <div class="flex flex-center">
-                <div class="flex-auto mr2">
-                  <div class="h2 black">
-                    <span>{{ user.username }}:{{ name }}</span>
-                  </div>
-                  <div class="black h5">{{ desc }}</div>
-                  <div class="h6 gray">created by <b>{{ user.username }}</b></div>
-                </div>
-                {{# if stars.count }}
-                  <div class="flex-none mr1">
-                    <div class="flex flex-center">
-                      <div class="flex">
-                        <div class="flex-shrink">
-                          <div class="stack flex stack--right">
-                            {{# each stars }}
-                              <div class="stack-item mr1">
-                                {{> avatar user=user size="low-small" shape="circle"}}
-                              </div>
-                            {{/each}}
-                          </div>
-                        </div>
-                      </div>
-                      <div class="gray h5 bold px1">
-                        <span>+ </span><span>{{ stars.count }}</span>
-                      </div>
-                    </div>
-                  </div>
-                {{/if}}
-                <div class="flex-none" style="width:3rem;">
-                  <div class="bg-silver rounded" style="width:3rem;height:3rem;outline:none;">
-                    <a href="{{ pathFor route='Profile' username=user.username }}">
-                      {{> avatar user=user }}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </a>
-        </li>
+        {{ > codeItem }}
       {{/each}}
     </ul>
   {{ else }}
     Not found functions.
   {{/if}}
+</template>
+
+<template name="codeItem">
+  <li class="sm-col-12 px2">
+    <a href="{{ pathFor route='Code' username=user.username }}">
+      <div class="px2 py3 bg-smoke-hover border-bottom">
+        <div class="flex flex-center">
+          <div class="flex-auto mr2">
+            <div class="h2 black">
+              <span>{{ user.username }}:{{ name }}</span>
+            </div>
+            <div class="black h5">{{ desc }}</div>
+            <div class="h6 gray">created by <b>{{ user.username }}</b></div>
+          </div>
+          {{# if stars.count }}
+            <div class="flex-none mr1">
+              <div class="flex flex-center">
+                <div class="flex">
+                  <div class="flex-shrink">
+                    <div class="stack flex stack--right">
+                      {{# each stars }}
+                        <div class="stack-item mr1">
+                          {{> avatar user=user size="low-small" shape="circle"}}
+                        </div>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+                <div class="gray h5 bold px1">
+                  <span>+ </span><span>{{ stars.count }}</span>
+                </div>
+              </div>
+            </div>
+          {{/if}}
+          <div class="flex-none" style="width:3rem;">
+            <div class="bg-silver rounded" style="width:3rem;height:3rem;outline:none;">
+              <a href="{{ pathFor route='Profile' username=user.username }}">
+                {{> avatar user=user }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </li>
 </template>
 
 <template name="code">
@@ -155,6 +159,30 @@
     {{/each}}
     <button type="submit" class="button mt2">Update</button>
   {{/autoForm}}
+</template>
+
+<template name="search">
+  <div id="Search">
+    {{> esInput index="codes" placeholder="Search function" class="field-light block full-width h2 mb1" }}
+
+    <ul class="functions sm-flex flex-wrap mxn2">
+      {{#ifEsIsSearching index="codes"}}
+        <li class="full-width">
+          {{ > loading }}
+        </li>
+      {{ else }}
+        {{#esEach index="codes"}}
+          {{ > codeItem }}
+        {{/esEach}}
+      {{/ifEsIsSearching}}
+      {{#ifEsHasNoResults index="codes"}}
+        <li class="px3 center gray full-width">
+          <h1>No function!</h1>
+          <span class="h5">Do you want to add?</span>
+        </li>
+      {{/ifEsHasNoResults}}
+    </ul>
+  </div>
 </template>
 
 <template name="loading">

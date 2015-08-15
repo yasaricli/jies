@@ -5,7 +5,15 @@
 
 textarea { resize:none; }
 
-#Surface { }
+input {
+  &.h2 {
+    height:60px;
+  }
+}
+
+#Surface {
+  margin-bottom:100px;
+}
 
 #login-dropdown-list {
   top:0px;
@@ -42,9 +50,10 @@ textarea { resize:none; }
 }
 
 .CodeMirror {
-  min-height:300px;
+  min-height:100px;
   height:auto;
   font-size:15px;
+  z-index:1;
 }
 
 .form-group {
@@ -90,4 +99,21 @@ textarea { resize:none; }
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
     -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
   }
+}
+
+
+#Search {
+  margin-top:100px;
+  position:relative;
+  z-index:1;
+
+  .spinner {
+    margin:30px auto; 
+  }
+}
+
+.bg-charcoal {
+  position:fixed;
+  bottom:0px;
+  z-index:2;
 }
