@@ -8,7 +8,20 @@ var path = require('path'),
     helpers = require('../lib/helpers.js');
 
 var json = path.resolve('jies.json'),
-    action = process.argv[2];
+    action = process.argv[2],
+
+    // read json File
+    readJson = function(callback) {
+      fs.readFile(json, 'utf8', function (err, data) {
+        var options = JSON.parse(data);
+
+        if (_.isEmpty(options.functions)) {
+          return helpers.getHelper('emptyFunctionsLog');
+        }
+
+        callback(options);
+      });
+    }
 
 helpers.getHelper('startedLog');
 
@@ -34,12 +47,7 @@ switch(action) {
       return helpers.getHelper('notExistLog');
     }
 
-    fs.readFile(json, 'utf8', function (err, data) {
-      var options = JSON.parse(data);
-
-      if (_.isEmpty(options.functions)) {
-        return helpers.getHelper('emptyFunctionsLog');
-      }
+    readJson(function(options) {
 
       // started
       helpers.getHelper('incStartedLog', options.name);
@@ -55,6 +63,12 @@ switch(action) {
         // fail
         helpers.getHelper('includedLog', name, ' not defined'.bold.red);
       });
+    });
+  break;
+
+  case "list":
+    readJson(function(options) {
+      helpers.getHelper('listFunctionsLog', options.functions);
     });
   break;
 

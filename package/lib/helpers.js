@@ -1,3 +1,5 @@
+var _ = require('underscore');
+
 // init require colors
 require('colors');
 
@@ -40,6 +42,12 @@ var HELPERS = {
     this.log(fn.cyan + ' --> '.bold.magenta + result)
   },
 
+  listFunctionsLog: function(functions) {
+    _.forEach(functions, function(fn) {
+      var name = '['+ fn +']';
+      this.log('* '.bold.yellow + name.cyan);
+    }, this);
+  },
   emptyFunctionsLog: function() {
     this.log('Empty json functions.\n'.red.bold);
     this.log('  Example:'.yellow.bold);
