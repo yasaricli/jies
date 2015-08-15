@@ -20,7 +20,7 @@ Meteor.publishComposite('codes', function() {
         children: [
           {
             find: function(star) {
-              return Users.find({ _id: start.userId });
+              return Users.find({ _id: star.userId });
             }
           }
         ]
@@ -57,7 +57,7 @@ Meteor.publishComposite('code', function(username, name) {
         children: [
           {
             find: function(star) {
-              return Users.find({ _id: start.userId });
+              return Users.find({ _id: star.userId });
             }
           }
         ]
@@ -89,7 +89,7 @@ Meteor.publishComposite('profile', function(username) {
             children: [
               {
                 find: function(star) {
-                  return Users.find({ _id: start.userId });
+                  return Users.find({ _id: star.userId });
                 }
               }
             ]

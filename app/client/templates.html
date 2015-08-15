@@ -10,10 +10,10 @@
   <div class="navbar">
     <div class="flex flex-center full-width" style="min-height:4rem;">
       {{# if currentUser }}
-        <a href="{{ pathFor route='InsertCode' }}" class="button bg-twitter-blue ml1">New Function</a>
+        <a href="{{ pathFor route='InsertCode' }}" class="button bg-twitter-blue ml2">New Function</a>
       {{/if}}
       <div class="flex-grow center bold"></div>
-      <div class="mr1">
+      <div class="mr2">
         {{> loginButtons }}
       </div>
     </div>
@@ -158,5 +158,5 @@
 </template>
 
 <template name="loading">
-  loading..
+  <div class="spinner"></div>
 </template>
