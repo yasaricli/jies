@@ -9,10 +9,21 @@ Meteor.publishComposite('codes', function() {
           return Users.find({ _id: code.userId });
         }
       },
+
+      // code --> stars
       {
         find: function(code) {
           return Stars.find({ codeId: code._id });
-        }
+        },
+
+        // star --> users
+        children: [
+          {
+            find: function(star) {
+              return Users.find({ _id: start.userId });
+            }
+          }
+        ]
       }
     ]
   }
@@ -28,17 +39,28 @@ Meteor.publishComposite('code', function(username, name) {
     },
 
     children: [
+
+      // code --> users
       {
         find: function(code) {
           return Users.find({ _id: code.userId });
         }
       },
 
+      // code --> stars
       {
         find: function(code) {
           return Stars.find({ codeId: code._id });
-        }
+        },
 
+        // star --> users
+        children: [
+          {
+            find: function(star) {
+              return Users.find({ _id: start.userId });
+            }
+          }
+        ]
       }
     ]
   }
@@ -54,7 +76,25 @@ Meteor.publishComposite('profile', function(username) {
       {
         find: function(user) {
           return Codes.find({ userId: user._id });
-        }
+        },
+
+        // code --> stars
+        children: [
+          {
+            find: function(code) {
+              return Stars.find({ codeId: code._id });
+            },
+
+            // star --> users
+            children: [
+              {
+                find: function(star) {
+                  return Users.find({ _id: start.userId });
+                }
+              }
+            ]
+          }
+        ]
       }
     ]
   }
