@@ -3943,6 +3943,10 @@ p {
 .fa-star-o {
   cursor:pointer;
   color: @gray;
+
+  &.no-auth {
+    cursor:default;
+  }
 }
 
 .fa-star:extend(.fa-star-o) {
@@ -4042,6 +4046,13 @@ input {
   position:fixed;
   bottom:0px;
   z-index:2;
+
+  a {
+    &:hover {
+      background-color:white;
+      color:#444851;
+    }
+  }
 }
 
 .color {

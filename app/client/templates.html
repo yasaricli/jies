@@ -109,7 +109,7 @@
 <template name="code">
   {{# if code }}
     <h2>
-      <i class="fa star {{# if code.isStar }}fa-star{{ else }}fa-star-o{{/if}}"></i>
+      <i class="fa star {{# if code.isStar }}fa-star{{ else }}fa-star-o{{/if}} {{# unless currentUser }}no-auth{{/unless}}"></i>
       {{ code.user.username }}:{{ code.name }}
     </h2>
     <p class="gray h4">{{ code.desc }}</p>
