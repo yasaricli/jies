@@ -62,3 +62,7 @@ Router.route('/~:username/:name/update', {
     }
   }
 });
+
+Router.plugin('ensureSignedIn', {
+  only: ['InsertCode', 'UpdateCode']
+});

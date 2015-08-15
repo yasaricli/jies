@@ -36,7 +36,21 @@ Template.code.onRendered(function() {
 });
 
 Template.search.onRendered(function() {
+  var $el = $(this.firstNode);
+
+  // focus search input
   this.$('input').focus();
+
+  this.instance = EasySearch.getComponentInstance({
+    index : 'codes'
+  });
+
+  this.instance.on('searchResults', function(result) {
+    if (_.isEmpty(result)) {
+      return $el.removeClass('result');
+    }
+    return $el.addClass('result');
+  });
 });
 
 // code mirror on destroyed template remove .

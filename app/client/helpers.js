@@ -11,3 +11,9 @@ Template.code.helpers({
     }
   }
 });
+
+Template.user.helpers({
+  userId: function() {
+    return Meteor.userId();
+  }
+});

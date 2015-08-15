@@ -10,11 +10,11 @@
   <div class="navbar">
     <div class="flex flex-center full-width" style="min-height:4rem;">
       {{# if currentUser }}
-        <a href="{{ pathFor route='InsertCode' }}" class="button bg-twitter-blue ml2">New Function</a>
+        <a href="{{ pathFor route='InsertCode' }}" class="button ml2">Push</a>
       {{/if}}
       <div class="flex-grow center bold"></div>
       <div class="mr2">
-        {{> loginButtons }}
+        {{ > user }}
       </div>
     </div>
   </div>
@@ -65,7 +65,10 @@
         <div class="flex flex-center">
           <div class="flex-auto mr2">
             <div class="h2 black">
-              <span>{{ user.username }}:{{ name }}</span>
+              <span>
+                <a href="{{ pathFor route='Profile' username=user.username }}">{{ user.username }}</a>
+                :{{ name }}
+              </span>
             </div>
             <div class="black h5">{{ desc }}</div>
             <div class="h6 gray">created by <b>{{ user.username }}</b></div>
@@ -162,9 +165,8 @@
 </template>
 
 <template name="search">
-  <div id="Search">
+  <div id="Search" class="full-width">
     {{> esInput index="codes" placeholder="find function" class="field-light block full-width h2 mb1" }}
-
     <ul class="functions sm-flex flex-wrap mxn2">
       {{#ifEsIsSearching index="codes"}}
         <li class="full-width">
@@ -185,6 +187,18 @@
       {{/ifEsHasNoResults}}
     </ul>
   </div>
+</template>
+
+<template name="user">
+  {{# if userId }}
+    <a href="{{ pathFor route='Profile' username=currentUser.username }}" class="button button-outline gray">
+      {{ currentUser.username }}
+    </a>
+    <a href="/" class="button bg-orange logout">logout</a>
+  {{ else }}
+    <a href="{{ pathFor route='atSignUp' }}" class="button bg-twitter-blue">Sign up</a>
+    <a href="{{ pathFor route='atSignIn' }}" class="button button-outline gray">Sign In</a>
+  {{/if}}
 </template>
 
 <template name="loading">

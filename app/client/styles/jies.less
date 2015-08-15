@@ -1,3 +1,8 @@
+
+@gray:       #a3a6ad;
+@yellow:     rgba(249, 201, 51, 0.8);
+@red:        #ff4136;
+
 .margin-auto {
   margin:0 auto!important;
 }
@@ -3904,4 +3909,156 @@ p {
     border-color: #66afe9;
     outline: 0;
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+}
+
+#Surface {
+  margin-bottom:100px;
+}
+
+#login-dropdown-list {
+  top:0px;
+  right:0px;
+  left: inherit;
+}
+
+.profile-avatar {
+  width:160px;
+  height:160px;
+
+  .avatar-initials {
+    line-height:160px;
+  }
+}
+
+.avatar-low-small {
+  width:24px;
+  height:24px;
+
+  .avatar-initials {
+    font-size:11px;
+    line-height:24px;
+  }
+}
+
+.fa-star-o {
+  cursor:pointer;
+  color: @gray;
+}
+
+.fa-star:extend(.fa-star-o) {
+  color: @yellow;
+}
+
+.CodeMirror {
+  min-height:100px;
+  height:auto;
+  font-size:15px;
+  z-index:1;
+}
+
+.form-group {
+  position:relative;
+
+  .help-block {
+    color: @red;
+    position:absolute;
+    z-index:1;
+    right: 17px;
+    top: 21px;
+    font-size: 13px;
+  }
+
+  .big {
+    height:60px;
+  }
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  background-color: #444851;
+
+  margin: 100px auto;
+  -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+  animation: sk-rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes sk-rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+
+
+.functions {
+  position:relative;
+  z-index:1;
+
+  .h2 {
+    a {
+      color:#222;
+
+      &:hover {
+        text-decoration:underline;
+      }
+    }
+  }
+}
+
+textarea { resize:none; }
+
+input {
+  &.h2 {
+    height:60px;
+  }
+}
+
+#Search {
+  margin-top:200px;
+
+  &.result {
+    margin-top:0px;
+  }
+
+  .spinner {
+    margin:30px auto;
+  }
+}
+
+.bg-charcoal {
+  position:fixed;
+  bottom:0px;
+  z-index:2;
+}
+
+.color {
+  background:red;
+}
+
+#at-btn:extend(.button all, .button-big all, .mb2) { }
+
+.at-input {
+  input {
+    &:extend(.field-light all, .block, .h2, .mb1);
+    height:60px;
+  }
+}
+
+.at-form {
+  .at-error {
+    color: @red;
+  }
 }

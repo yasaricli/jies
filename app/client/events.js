@@ -11,3 +11,12 @@ Template.code.events({
     });
   })
 });
+
+Template.user.events({
+  'click .logout': function(event) {
+    event.preventDefault();
+
+    // logout
+    AccountsTemplates.logout();
+  }
+});

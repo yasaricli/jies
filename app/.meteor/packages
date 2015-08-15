@@ -25,3 +25,6 @@ less
 utilities:avatar
 copleykj:jquery-autosize
 matteodem:easy-search
+useraccounts:core
+useraccounts:unstyled
+useraccounts:iron-routing

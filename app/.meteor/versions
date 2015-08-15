@@ -16,6 +16,7 @@ blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
 check@1.0.5
+coffeescript@1.0.6
 copleykj:jquery-autosize@1.17.8
 dburles:collection-helpers@1.0.3
 ddp@1.1.0
@@ -79,6 +80,7 @@ routepolicy@1.0.5
 service-configuration@1.0.4
 session@1.1.0
 sha@1.0.3
+softwarerero:accounts-t9n@1.0.9
 spacebars@1.0.6
 spacebars-compiler@1.0.6
 srp@1.0.3
@@ -87,6 +89,9 @@ tracker@1.0.7
 ui@1.0.6
 underscore@1.0.3
 url@1.0.4
+useraccounts:core@1.12.1
+useraccounts:iron-routing@1.12.1
+useraccounts:unstyled@1.12.1
 utilities:avatar@0.8.2
 webapp@1.2.0
 webapp-hashing@1.0.3
