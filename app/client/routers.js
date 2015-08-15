@@ -5,6 +5,13 @@ Router.route('/', {
   }
 });
 
+Router.route('/codes', {
+  name: 'Codes',
+  waitOn: function() {
+    return Meteor.subscribe('codes');
+  }
+});
+
 Router.route('/push', {
   name: 'InsertCode'
 });

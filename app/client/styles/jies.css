@@ -1,3 +1,7 @@
+.margin-auto {
+  margin:0 auto!important;
+}
+
 .black,.dark-gray,body {
     color: #222
 }

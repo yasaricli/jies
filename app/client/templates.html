@@ -163,7 +163,7 @@
 
 <template name="search">
   <div id="Search">
-    {{> esInput index="codes" placeholder="Search function" class="field-light block full-width h2 mb1" }}
+    {{> esInput index="codes" placeholder="find function" class="field-light block full-width h2 mb1" }}
 
     <ul class="functions sm-flex flex-wrap mxn2">
       {{#ifEsIsSearching index="codes"}}
@@ -177,8 +177,10 @@
       {{/ifEsIsSearching}}
       {{#ifEsHasNoResults index="codes"}}
         <li class="px3 center gray full-width">
-          <h1>No function!</h1>
-          <span class="h5">Do you want to add?</span>
+          <h1>Sorry, no results.</h1>
+          <div class="sm-flex">
+            <a href="{{ pathFor route='Codes' }}" class="button block bg-orange margin-auto">See all functions</a>
+          </div>
         </li>
       {{/ifEsHasNoResults}}
     </ul>
