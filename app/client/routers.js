@@ -16,6 +16,10 @@ Router.route('/push', {
   name: 'InsertCode'
 });
 
+Router.route('/settings', {
+  name: 'Settings'
+});
+
 Router.route('/~:username', {
   name: 'Profile',
   waitOn: function() {
@@ -64,5 +68,5 @@ Router.route('/~:username/:name/update', {
 });
 
 Router.plugin('ensureSignedIn', {
-  only: ['InsertCode', 'UpdateCode']
+  only: ['InsertCode', 'UpdateCode', 'Settings']
 });

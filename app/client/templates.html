@@ -54,7 +54,7 @@
       {{/each}}
     </ul>
   {{ else }}
-    Not found functions.
+    <div class="center gray">Not found functions</div>
   {{/if}}
 </template>
 
@@ -140,6 +140,9 @@
     </div>
     <div class="center">
       <h2 class="mt0 mb0 bold">{{ user.username }}</h2>
+      {{# if isEqual user.username currentUser.username }}
+        <a href="{{ pathFor route='atChangePwd' }}" class="button button-outline gray mt2">Change Password</a>
+      {{/if}}
     </div>
   </div>
   {{ > codes }}

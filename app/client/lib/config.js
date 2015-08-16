@@ -1,3 +1,5 @@
+var pwd = AccountsTemplates.removeField('password');
+
 Router.configure({
   layoutTemplate: 'layout',
   loadingTemplate: 'loading'
@@ -12,15 +14,15 @@ Avatar.setOptions({
 });
 
 AccountsTemplates.configure({
+  enablePasswordChange: true,
   homeRoutePath: '/',
   showLabels: false
 });
 
 AccountsTemplates.configureRoute('signIn');
 AccountsTemplates.configureRoute('signUp');
+AccountsTemplates.configureRoute('changePwd');
 
-// reset form
-var pwd = AccountsTemplates.removeField('password');
 AccountsTemplates.removeField('email');
 AccountsTemplates.addFields([
   {
