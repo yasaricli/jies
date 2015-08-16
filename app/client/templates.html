@@ -71,7 +71,9 @@
               </span>
             </div>
             <div class="black h5">{{ desc }}</div>
-            <div class="h6 gray">created by <b>{{ user.username }}</b></div>
+            <div class="h6 gray">
+              created by <b>{{ user.username }}</b>
+            </div>
           </div>
           {{# if stars.count }}
             <div class="flex-none mr1">
@@ -111,6 +113,7 @@
     <h2>
       <i class="fa star {{# if code.isStar }}fa-star{{ else }}fa-star-o{{/if}} {{# unless currentUser }}no-auth{{/unless}}"></i>
       {{ code.user.username }}:{{ code.name }}
+      {{ livestamp code.createdAt }}
     </h2>
     <p class="gray h4">{{ code.desc }}</p>
     <textarea name="body">{{ code.body }}</textarea>
