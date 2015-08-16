@@ -4073,3 +4073,31 @@ input {
     color: @red;
   }
 }
+
+#toast-container > :hover {
+  box-shadow: none;
+}
+
+.toast {
+  box-shadow: none;
+
+  & {
+    box-shadow:none!important;
+  }
+
+  &.toast-success {
+    background-color: #11a3b7;
+  }
+
+  &.toast-error {
+    background-color: #bd362f;
+  }
+
+  &.toast-info {
+    background-color: #2f96b4;
+  }
+
+  &.toast-warning {
+    background-color: #f89406;
+  }
+}

@@ -7,6 +7,10 @@ Template.codes.helpers({
 Template.code.helpers({
   onSuccess: function() {
     return function() {
+
+      // Success message
+      toastr.success('Function remove successfully');
+
       return Router.go('Index');
     }
   }
