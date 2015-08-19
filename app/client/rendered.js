@@ -45,11 +45,14 @@ Template.search.onRendered(function() {
     index : 'codes'
   });
 
-  this.instance.on('searchResults', function(result) {
-    if (_.isEmpty(result)) {
-      return $el.removeClass('result');
+  this.instance.on('searchingDone', function(searchingIsDone) {
+    if (searchingIsDone) {
+      return $el.addClass('result');
     }
-    return $el.addClass('result');
+  });
+
+  this.instance.on('currentValue', function (val) {
+    return $el.removeClass('result');
   });
 });
 
