@@ -1,7 +1,9 @@
 Codes = new Mongo.Collection('codes');
 
 // name is the field of the documents to search over
-Codes.initEasySearch('name');
+Codes.initEasySearch('name', {
+  use: 'mongo-db'
+});
 
 Codes.attachSchema(new SimpleSchema({
 
@@ -42,6 +44,22 @@ Codes.attachSchema(new SimpleSchema({
     autoValue: function() {
       if (this.isInsert) {
         return this.userId;
+      }
+    },
+    autoform: {
+      type: 'hidden'
+    }
+  },
+
+  username: {
+    type: String,
+    denyUpdate: true,
+    autoValue: function() {
+      if (this.isInsert) {
+        var user = getUserById(this.userId);
+        if (user) {
+          return user.username;
+        }
       }
     },
     autoform: {

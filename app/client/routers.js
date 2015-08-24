@@ -1,8 +1,5 @@
 Router.route('/', {
-  name: 'Index',
-  waitOn: function() {
-    return Meteor.subscribe('codes');
-  }
+  name: 'Index'
 });
 
 Router.route('/codes', {

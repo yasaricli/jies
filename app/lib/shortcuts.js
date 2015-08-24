@@ -1,5 +1,5 @@
 var root = this;
 
-root.getUser = function(username) {
-  return Users.findOne({ username: username });
+root.getUserById = function(_id) {
+  return Users.findOne(_id);
 }
