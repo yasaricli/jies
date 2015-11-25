@@ -36,7 +36,7 @@ Template.code.onRendered(function() {
 });
 
 Template.search.onRendered(function() {
-  var $el = $(this.firstNode);
+  const $el = $(this.firstNode);
 
   // focus search input
   this.$('input').focus();
@@ -45,18 +45,18 @@ Template.search.onRendered(function() {
     index : 'codes'
   });
 
-  this.instance.on('searchingDone', function(searchingIsDone) {
+  this.instance.on('searchingDone', (searchingIsDone) => {
     if (searchingIsDone) {
       return $el.addClass('result');
     }
   });
 
-  this.instance.on('currentValue', function (val) {
+  this.instance.on('currentValue', (val) => {
     return $el.removeClass('result');
   });
 });
 
 // code mirror on destroyed template remove .
-onDestroyedTemplates(['insertCode', 'updateCode', 'code'], function() {
+onDestroyedTemplates(['insertCode', 'updateCode', 'code'], () => {
   $('.CodeMirror').remove();
 });

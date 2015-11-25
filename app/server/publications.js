@@ -1,25 +1,26 @@
-Meteor.publishComposite('codes', function() {
+Meteor.publishComposite('codes', () => {
   return {
-    find: function() {
+    find() {
       return Codes.find({});
     },
+
     children: [
       {
-        find: function(code) {
+        find(code) {
           return Users.find({ _id: code.userId });
         }
       },
 
       // code --> stars
       {
-        find: function(code) {
+        find(code) {
           return Stars.find({ codeId: code._id });
         },
 
         // star --> users
         children: [
           {
-            find: function(star) {
+            find(star) {
               return Users.find({ _id: star.userId });
             }
           }
@@ -29,10 +30,10 @@ Meteor.publishComposite('codes', function() {
   }
 });
 
-Meteor.publishComposite('code', function(username, name) {
+Meteor.publishComposite('code', (username, name) => {
   return {
-    find: function() {
-      var user = Users.findOne({ username: username });
+    find() {
+      const user = Users.findOne({ username: username });
       if (user) {
         return Codes.find({ userId: user._id, name: name });
       }
@@ -42,21 +43,21 @@ Meteor.publishComposite('code', function(username, name) {
 
       // code --> users
       {
-        find: function(code) {
+        find(code) {
           return Users.find({ _id: code.userId });
         }
       },
 
       // code --> stars
       {
-        find: function(code) {
+        find(code) {
           return Stars.find({ codeId: code._id });
         },
 
         // star --> users
         children: [
           {
-            find: function(star) {
+            find(star) {
               return Users.find({ _id: star.userId });
             }
           }
@@ -66,29 +67,29 @@ Meteor.publishComposite('code', function(username, name) {
   }
 });
 
-Meteor.publishComposite('profile', function(username) {
+Meteor.publishComposite('profile', (username) => {
   return {
-    find: function() {
+    find() {
       return Users.find({ username: username });
     },
 
     children: [
       {
-        find: function(user) {
+        find(user) {
           return Codes.find({ userId: user._id });
         },
 
         // code --> stars
         children: [
           {
-            find: function(code) {
+            find(code) {
               return Stars.find({ codeId: code._id });
             },
 
             // star --> users
             children: [
               {
-                find: function(star) {
+                find(star) {
                   return Users.find({ _id: star.userId });
                 }
               }

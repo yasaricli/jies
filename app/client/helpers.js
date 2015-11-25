@@ -1,11 +1,11 @@
 Template.codes.helpers({
-  codes: function() {
+  codes() {
     return Codes.find({ }, { sort: { createdAt: -1 }});
   }
 });
 
 Template.code.helpers({
-  onSuccess: function() {
+  onSuccess() {
     return function() {
 
       // Success message
@@ -17,7 +17,7 @@ Template.code.helpers({
 });
 
 Template.user.helpers({
-  userId: function() {
+  userId() {
     return Meteor.userId();
   }
 });

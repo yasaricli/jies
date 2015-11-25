@@ -1,13 +1,13 @@
 Router.route('/raw/:username/:name/:app', {
   name: 'Raw',
   where: 'server',
-  action: function(req, res, next) {
-    var params = this.params,
-        user = Users.findOne({ username: params.username });
+  action(req, res, next) {
+    const params = this.params;
+    const user = Users.findOne({ username: params.username });
 
     // USER FOUND
     if (user) {
-      var code = Codes.findOne({ userId: user._id, name: params.name });
+      const code = Codes.findOne({ userId: user._id, name: params.name });
 
       if (code) {
         res.writeHead(200, { "Content-Type": "text/javascript" });

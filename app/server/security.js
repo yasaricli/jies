@@ -1,7 +1,7 @@
 Security.defineMethod("ifIsCurrentUser", {
   fetch: [],
   transform: null,
-  deny: function(type, arg, userId, doc) {
+  deny(type, arg, userId, doc) {
     return userId !== doc.userId;
   }
 });
@@ -9,8 +9,8 @@ Security.defineMethod("ifIsCurrentUser", {
 Security.defineMethod("ifStarNotThen", {
   fetch: [],
   transform: null,
-  deny: function(type, arg, userId, doc) {
-    var star = Stars.findOne({ userId: userId, codeId: doc.codeId });
+  deny(type, arg, userId, doc) {
+    const star = Stars.findOne({ userId: userId, codeId: doc.codeId });
     return star;
   }
 });

@@ -1,11 +1,11 @@
-var root = this;
+const root = this;
 
 // Schemas object
 root.Schemas = {};
 
 AutoForm.hooks({
   InsertCodeForm: {
-    onSuccess: function() {
+    onSuccess() {
 
       // Success message
       toastr.success('Function created successfully');
@@ -15,8 +15,8 @@ AutoForm.hooks({
     }
   },
   UpdateCodeForm: {
-    onSuccess: function() {
-      var doc = this.currentDoc;
+    onSuccess() {
+      const doc = this.currentDoc;
 
       // Success message
       toastr.success('Function update successfully');

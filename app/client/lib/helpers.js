@@ -1,10 +1,10 @@
-var HELPERS = {
-  isEqual: function(a, b) {
+const HELPERS = {
+  isEqual(a, b) {
     return _.isEqual(a, b);
   }
 };
 
-_.each(HELPERS, function(fn, name) {
+_.each(HELPERS, (fn, name) => {
 
   // Register
   Template.registerHelper(name, fn);

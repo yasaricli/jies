@@ -1,6 +1,6 @@
 Template.code.events({
-  'click .star': isAuthenticated(function() {
-    var code = this.code();
+  'click .star': isAuthenticated(() => {
+    const code = this.code();
 
     if (code.isStar()) {
       return Stars.remove(code.star()._id);
@@ -13,7 +13,7 @@ Template.code.events({
 });
 
 Template.user.events({
-  'click .logout': function(event) {
+  'click .logout'(event) {
     event.preventDefault();
 
     // logout

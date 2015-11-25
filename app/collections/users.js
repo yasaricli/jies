@@ -1,7 +1,7 @@
 Users = Meteor.users;
 
 Users.helpers({
-  codes: function() {
+  codes() {
     return Codes.find({ username: this.username });
   }
 });

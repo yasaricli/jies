@@ -1,5 +1,5 @@
-var root = this;
+const root = this;
 
-root.getUserById = function(_id) {
+root.getUserById = (_id) => {
   return Users.findOne(_id);
 }

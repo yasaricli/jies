@@ -41,7 +41,7 @@ Codes.attachSchema(new SimpleSchema({
   userId: {
     type: String,
     denyUpdate: true,
-    autoValue: function() {
+    autoValue() {
       if (this.isInsert) {
         return this.userId;
       }
@@ -54,9 +54,9 @@ Codes.attachSchema(new SimpleSchema({
   username: {
     type: String,
     denyUpdate: true,
-    autoValue: function() {
+    autoValue() {
       if (this.isInsert) {
-        var user = getUserById(this.userId);
+        const user = getUserById(this.userId);
         if (user) {
           return user.username;
         }
@@ -70,7 +70,7 @@ Codes.attachSchema(new SimpleSchema({
   createdAt: {
     type: Date,
     denyUpdate: true,
-    autoValue: function() {
+    autoValue() {
       if (this.isInsert) {
         return new Date();
       }
@@ -90,27 +90,27 @@ Codes.attachSchema(new SimpleSchema({
 }));
 
 Codes.helpers({
-  user: function() {
+  user() {
     return Users.findOne(this.userId);
   },
 
-  stars: function() {
+  stars() {
     return Stars.find({ codeId: this._id });
   },
 
-  isOwner: function() {
+  isOwner() {
     return _.isEqual(this.userId, Meteor.userId());
   },
 
-  star: function() {
+  star() {
     return Stars.findOne({ userId: Meteor.userId(), codeId: this._id });
   },
 
-  isStar: function() {
+  isStar() {
     return !!this.star();
   },
 
-  absoluteUrl: function() {
+  absoluteUrl() {
     return Router.url('Code', {
       name: this.name,
       username: this.user().username
@@ -119,8 +119,8 @@ Codes.helpers({
 });
 
 if (Meteor.isServer) {
-  Codes.before.insert(function(userId, doc) {
-    var code = Codes.findOne(_.pick(doc, ['userId', 'name']));
+  Codes.before.insert((userId, doc) => {
+    const code = Codes.findOne(_.pick(doc, ['userId', 'name']));
 
     if (code) {
       doc.name = Random.id(10);

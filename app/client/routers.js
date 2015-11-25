@@ -4,7 +4,7 @@ Router.route('/', {
 
 Router.route('/codes', {
   name: 'Codes',
-  waitOn: function() {
+  waitOn() {
     return Meteor.subscribe('codes');
   }
 });
@@ -19,13 +19,13 @@ Router.route('/settings', {
 
 Router.route('/~:username', {
   name: 'Profile',
-  waitOn: function() {
+  waitOn() {
     return Meteor.subscribe('profile', this.params.username);
   },
-  data: function() {
-    var params = this.params;
+  data() {
+    const params = this.params;
     return {
-      user: function() {
+      user() {
         return Users.findOne({ username: params.username });
       }
     }
@@ -34,14 +34,14 @@ Router.route('/~:username', {
 
 Router.route('/~:username/:name', {
   name: 'Code',
-  waitOn: function() {
-    var params = this.params;
+  waitOn() {
+    const params = this.params;
     return Meteor.subscribe('code', params.username, params.name);
   },
-  data: function() {
-    var params = this.params;
+  data() {
+    const params = this.params;
     return {
-      code: function() {
+      code() {
         return Codes.findOne({ name: params.name });
       }
     }
@@ -50,14 +50,14 @@ Router.route('/~:username/:name', {
 
 Router.route('/~:username/:name/update', {
   name: 'UpdateCode',
-  waitOn: function() {
+  waitOn() {
     var params = this.params;
     return Meteor.subscribe('code', params.username, params.name);
   },
-  data: function() {
-    var params = this.params;
+  data() {
+    const params = this.params;
     return {
-      code: function() {
+      code() {
         return Codes.findOne({ name: params.name });
       }
     }
